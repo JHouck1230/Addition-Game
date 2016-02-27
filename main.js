@@ -64,11 +64,10 @@ function reRoll() {
 }
 
 function checkWin() {
-	if($('.numbers.animated').length === $('.numbers').length){
+	if($('.numbers.disabled').length === $('.numbers').length){
 		var $h1 = $('h1');
 		$h1.text('You Win!');
 		animateIt($h1, tada);
-		debugger;
 	} else {
 		renderStars();
 	}
@@ -103,7 +102,7 @@ function newGame() {
 	var $h1Numbers = $('h1, .numbers');
 
 	for(var i = 0; i < 9; i++) {
-		$('.numbers').eq(i).removeClass('highlight animated bounceOut');
+		$('.numbers').eq(i).removeClass('disabled highlight animated bounceOut');
 	}
 	animateIt($numbers, bounceIn);
 	$h1.text('How Many Stars?');
