@@ -30,10 +30,21 @@ function animateIt(element, animation) {
 	})
 }
 
+function checkLose() {
+	var $h1 = $('h1');
+	var numbers = $('.numbers:not(.disabled)').text().split('');
+	var total = eval(numbers.join(' + '));
+	if(rerolls === 0 && total != starCount) {
+		$.text('You Lose!');
+		animateIt($h1, hinge);
+	} 
+}
+
 function reRoll() {
 	rerolls--;
 	if(rerolls === 0) {	
 		var $reroll = $('#reroll');
+		animateIt($reroll, zoomOutDown);
 		$reroll.addClass('disabled');
 	}
 	renderStars();
@@ -108,6 +119,7 @@ function renderStars() {
 		$star.eq(i).addClass('disabled');
 	}
 	starCount = 9 - hideCount;
+	checkLose();
 }
 
 
